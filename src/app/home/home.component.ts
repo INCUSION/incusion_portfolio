@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import anime from 'animejs/lib/anime.es.js';
 
 @Component({
@@ -8,20 +8,18 @@ import anime from 'animejs/lib/anime.es.js';
 })
 export class HomeComponent {
 
-  constructor() { }
-
+  constructor() {}
 
   ngAfterViewInit(): void {
 
-    // Wrap every letter in a span
-    var textWrapper = document.querySelector('.header .letters');
+    let textWrapper = document.querySelector('.header .letters');
     textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
-    
-    anime.timeline({loop: true})
+
+    anime.timeline({ loop: true })
       .add({
         targets: '.header .line',
-        scaleY: [0,1],
-        opacity: [0.5,1],
+        scaleY: [0, 1],
+        opacity: [0.5, 1],
         easing: "easeOutExpo",
         duration: 700
       })
@@ -33,11 +31,11 @@ export class HomeComponent {
         delay: 100
       }).add({
         targets: '.header .letter',
-        opacity: [0,1],
+        opacity: [0, 1],
         easing: "easeOutExpo",
         duration: 600,
         offset: '-=775',
-        delay: (el, i) => 34 * (i+1)
+        delay: (el, i) => 34 * (i + 1)
       }).add({
         targets: '.header',
         opacity: 0,
@@ -46,5 +44,4 @@ export class HomeComponent {
         delay: 1000
       });
   }
-
 }

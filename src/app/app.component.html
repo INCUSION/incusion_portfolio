@@ -1,8 +1,30 @@
-<div class="main-content">
-  <app-home></app-home>
-  <span #gallery><app-gallery></app-gallery></span>
-  <!-- <span #about><app-about></app-about></span>
-  <span #contact><app-contact></app-contact></span> -->
+<div class="overlay">
+  <div class="navigation style">
+    <i *ngFor="let nav of navigation" id="{{ nav.id }}"
+      [ngStyle]="{'background-image': nav.isActive ? 'url(../../assets/images/circle_full.svg)' : 'url(../../assets/images/circle_empty.svg)'}"
+      (click)="changePage(nav)">
+    </i>
+  </div>
+
+  <div class="social-media style">
+    <span class="line"></span>
+    <a class="instagram" href="#"></a>
+    <a class="linkedin" href="#"></a>
+    <span class="line"></span>
+  </div>
 </div>
 
-<!-- <router-outlet></router-outlet> -->
+<div class="main-content">
+  <span #home>
+    <app-home></app-home>
+  </span>
+  <span #about>
+    <app-about></app-about>
+  </span>
+  <span #gallery>
+    <app-gallery></app-gallery>
+  </span>
+  <span #contact>
+    <app-contact></app-contact>
+  </span>
+</div>
